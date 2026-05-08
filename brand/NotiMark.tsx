@@ -1,0 +1,53 @@
+import { useId, type SVGProps } from "react";
+
+/**
+ * Noti glyph mark — the lowercase italic "n" with the olive bell embedded
+ * in the right shoulder. The letter renders in `currentColor` while the
+ * bell uses the canonical brand olive token.
+ *
+ * Source of truth: src/assets/brand/noti-icon-white.svg (canonical mask).
+ */
+export function NotiMark({
+  size = 32,
+  className,
+  title = "Noti",
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number; title?: string }) {
+  const clipId = `noti-mark-${useId().replace(/:/g, "")}`;
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1024 1024"
+      width={size}
+      height={size}
+      role="img"
+      aria-label={title}
+      className={className}
+      {...props}
+    >
+      <defs>
+        <clipPath id={clipId}>
+          <path
+            d="M194 263Q272 378 315.0 420.0Q358 462 417 462Q452 462 471.0 442.5Q490 423 490 387Q490 352 464 272L428 163Q403 88 403 76Q403 59 417 59Q430 59 443.5 74.0Q457 89 487 135L509 122Q466 49 430.0 20.0Q394 -9 350 -9Q319 -9 300.5 7.0Q282 23 282 51Q282 98 310 182L365 348Q370 365 370 369Q370 377 362.0 383.5Q354 390 345 390Q331 390 311.0 375.5Q291 361 276 341Q230 281 198.5 206.0Q167 131 131 0H10L66 204Q112 366 112 382Q112 396 101.0 401.0Q90 406 58 407V434Q150 437 258 461Z"
+            transform="translate(283.6, 711.3) scale(0.88, -0.88)"
+          />
+        </clipPath>
+      </defs>
+      <path
+        d="M194 263Q272 378 315.0 420.0Q358 462 417 462Q452 462 471.0 442.5Q490 423 490 387Q490 352 464 272L428 163Q403 88 403 76Q403 59 417 59Q430 59 443.5 74.0Q457 89 487 135L509 122Q466 49 430.0 20.0Q394 -9 350 -9Q319 -9 300.5 7.0Q282 23 282 51Q282 98 310 182L365 348Q370 365 370 369Q370 377 362.0 383.5Q354 390 345 390Q331 390 311.0 375.5Q291 361 276 341Q230 281 198.5 206.0Q167 131 131 0H10L66 204Q112 366 112 382Q112 396 101.0 401.0Q90 406 58 407V434Q150 437 258 461Z"
+        transform="translate(283.6, 711.3) scale(0.88, -0.88)"
+        fill="currentColor"
+      />
+      <g clipPath={`url(#${clipId})`} fill="hsl(var(--noti-brand-bell))">
+        <ellipse cx="610" cy="295.4" rx="58.8" ry="46.2" />
+        <polygon points="551.2,308.0 517.6,383.6 702.4,383.6 668.8,308.0" />
+        <rect x="509.2" y="383.6" width="201.6" height="25.2" rx="12.6" />
+        <ellipse cx="610" cy="429.8" rx="25.2" ry="21.0" />
+        <ellipse cx="610" cy="245.0" rx="14.7" ry="12.6" />
+      </g>
+    </svg>
+  );
+}
+
+export default NotiMark;
