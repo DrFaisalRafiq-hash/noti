@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noti</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="root">
+      <!-- Auth view -->
+      <section id="view-auth" class="view hidden">
+        <header class="brand">
+          <img src="icons/icon-48.png" alt="" width="32" height="32" />
+          <h1>Noti</h1>
+        </header>
+        <p class="subtitle">Sign in to your Noti account to sync notes.</p>
+        <form id="auth-form" autocomplete="on">
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" required autocomplete="current-password" minlength="6" />
+          </label>
+          <div class="row">
+            <button type="submit" class="primary" data-mode="signin">Sign in</button>
+            <button type="button" class="ghost" id="toggle-mode">Create account</button>
+          </div>
+          <p id="auth-error" class="error" role="alert"></p>
+        </form>
+        <p class="footnote">Open the full app at <a href="https://noti-time.com/app" target="_blank" rel="noreferrer">noti-time.com</a></p>
+      </section>
+
+      <!-- Main app view -->
+      <section id="view-app" class="view hidden">
+        <header class="app-header">
+          <div class="title">
+            <img src="icons/icon-48.png" alt="" width="22" height="22" />
+            <h1>Noti</h1>
+          </div>
+          <div class="actions">
+            <button id="open-web" class="icon-btn" title="Open Noti in browser" aria-label="Open in browser">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6"/></svg>
+            </button>
+            <button id="signout" class="icon-btn" title="Sign out" aria-label="Sign out">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <form id="quick-add">
+          <textarea id="quick-text" placeholder="Capture a thought…" rows="2"></textarea>
+          <div class="composer-row">
+            <select id="mode-select" aria-label="Type">
+              <option value="note">Note</option>
+              <option value="task">Task</option>
+              <option value="reminder">Reminder</option>
+            </select>
+            <input type="datetime-local" id="remind-at" aria-label="Remind at" />
+            <button type="submit" class="primary">Save</button>
+          </div>
+        </form>
+
+        <div class="filter-row">
+          <input type="search" id="search" placeholder="Search notes…" aria-label="Search" />
+          <div class="chips" role="tablist">
+            <button class="chip active" data-filter="all" role="tab">All</button>
+            <button class="chip" data-filter="note" role="tab">Notes</button>
+            <button class="chip" data-filter="task" role="tab">Tasks</button>
+            <button class="chip" data-filter="reminder" role="tab">Reminders</button>
+          </div>
+        </div>
+
+        <div id="notes-list" class="notes-list" aria-live="polite"></div>
+        <div id="empty" class="empty hidden">
+          <p>A blank page</p>
+          <small>Capture a thought — turn it into anything later.</small>
+        </div>
+      </section>
+
+      <!-- Loading view -->
+      <section id="view-loading" class="view">
+        <div class="spinner" aria-label="Loading"></div>
+      </section>
+    </div>
+
+    <script src="lib/supabase.js"></script>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>
