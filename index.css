@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;450;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Monochromatic paper palette */
+    --background: 40 14% 96%;
+    --foreground: 30 10% 12%;
+
+    --card: 40 20% 99%;
+    --card-foreground: 30 10% 12%;
+
+    --popover: 40 20% 99%;
+    --popover-foreground: 30 10% 12%;
+
+    /* Subtle accent — muted amber/ochre */
+    --primary: 32 55% 48%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 35 12% 92%;
+    --secondary-foreground: 30 10% 18%;
+
+    --muted: 35 12% 92%;
+    --muted-foreground: 30 6% 44%;
+
+    --accent: 32 55% 48%;
+    --accent-foreground: 40 30% 98%;
+
+    --destructive: 8 55% 48%;
+    --destructive-foreground: 40 30% 98%;
+
+    --border: 30 10% 86%;
+    --input: 30 10% 86%;
+    --ring: 32 55% 48%;
+
+    --hairline: 30 10% 82%;
+    --ink: 30 10% 12%;
+    --ink-soft: 30 8% 32%;
+    --ink-faint: 30 6% 56%;
+    --paper: 40 20% 99%;
+    --paper-sunk: 38 14% 94%;
+    --noti-brand-bell: 60 13% 30%;
+
+    --shadow-soft: 0 1px 2px hsl(30 10% 12% / 0.04), 0 4px 16px hsl(30 10% 12% / 0.04);
+    --shadow-lift: 0 2px 6px hsl(30 10% 12% / 0.06), 0 12px 32px hsl(30 10% 12% / 0.08);
+
+    --radius: 0.875rem;
+
+    --font-display: 'Fraunces', ui-serif, Georgia, serif;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    --transition-smooth: 220ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* ============= Brand palettes =============
+     Each palette is mode-locked: choosing it implies light or dark.
+     Light palettes only apply on :root (no .dark). Dark palettes only
+     apply when .dark is present on <html>. */
+
+  /* ---------- LIGHT PALETTES ---------- */
+
+  /* Paper — bright clean white */
+  [data-palette="paper"]:not(.dark) {
+    --background: 0 0% 100%;
+    --card: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --paper: 0 0% 100%;
+    --paper-sunk: 220 12% 96%;
+    --foreground: 220 12% 12%;
+    --card-foreground: 220 12% 12%;
+    --popover-foreground: 220 12% 12%;
+    --ink: 220 12% 12%;
+    --ink-soft: 220 8% 32%;
+    --ink-faint: 220 6% 56%;
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --hairline: 220 10% 86%;
+    --secondary: 220 10% 95%;
+    --muted: 220 10% 95%;
+  }
+
+  /* Cream — warm off-white */
+  [data-palette="cream"]:not(.dark) {
+    --background: 38 44% 95%;
+    --card: 40 50% 98%;
+    --popover: 40 50% 98%;
+    --paper: 40 50% 98%;
+    --paper-sunk: 36 30% 91%;
+    --foreground: 28 18% 14%;
+    --card-foreground: 28 18% 14%;
+    --popover-foreground: 28 18% 14%;
+    --ink: 28 18% 14%;
+    --ink-soft: 28 12% 34%;
+    --ink-faint: 28 10% 56%;
+    --border: 32 22% 84%;
+    --input: 32 22% 84%;
+    --hairline: 32 22% 80%;
+    --secondary: 36 24% 90%;
+    --muted: 36 24% 90%;
+  }
+
+  /* Olive — warm sage green, social/default */
+  [data-palette="olive"]:not(.dark) {
+    --background: 75 22% 94%;
+    --card: 70 28% 97%;
+    --popover: 70 28% 97%;
+    --paper: 70 28% 97%;
+    --paper-sunk: 75 18% 90%;
+    --foreground: 80 18% 14%;
+    --card-foreground: 80 18% 14%;
+    --popover-foreground: 80 18% 14%;
+    --ink: 80 18% 14%;
+    --ink-soft: 80 12% 32%;
+    --ink-faint: 80 10% 52%;
+    --border: 75 16% 80%;
+    --input: 75 16% 80%;
+    --hairline: 75 16% 76%;
+    --secondary: 75 20% 88%;
+    --muted: 75 20% 88%;
+    --primary: 82 32% 38%;
+    --primary-foreground: 70 28% 97%;
+    --accent: 82 32% 38%;
+    --accent-foreground: 70 28% 97%;
+    --ring: 82 32% 38%;
+  }
+
+  /* Mist — really subtle blue */
+  [data-palette="mist"]:not(.dark) {
+    --background: 210 38% 96%;
+    --card: 210 40% 99%;
+    --popover: 210 40% 99%;
+    --paper: 210 40% 99%;
+    --paper-sunk: 210 30% 93%;
+    --foreground: 215 24% 14%;
+    --card-foreground: 215 24% 14%;
+    --popover-foreground: 215 24% 14%;
+    --ink: 215 24% 14%;
+    --ink-soft: 215 14% 34%;
+    --ink-faint: 215 10% 56%;
+    --border: 210 22% 86%;
+    --input: 210 22% 86%;
+    --hairline: 210 22% 82%;
+    --secondary: 210 24% 92%;
+    --muted: 210 24% 92%;
+    --primary: 215 60% 48%;
+    --primary-foreground: 210 40% 99%;
+    --ring: 215 60% 48%;
+  }
+
+  /* ---------- DARK PALETTES ---------- */
+
+  /* Midnight — dark blue */
+  .dark[data-palette="midnight"] {
+    --background: 222 38% 8%;
+    --card: 222 32% 12%;
+    --popover: 222 32% 12%;
+    --paper: 222 32% 12%;
+    --paper-sunk: 222 28% 14%;
+    --foreground: 215 24% 92%;
+    --card-foreground: 215 24% 92%;
+    --popover-foreground: 215 24% 92%;
+    --ink: 215 24% 92%;
+    --ink-soft: 215 18% 76%;
+    --ink-faint: 215 12% 56%;
+    --border: 222 22% 22%;
+    --input: 222 22% 22%;
+    --hairline: 222 22% 24%;
+    --secondary: 222 22% 17%;
+    --muted: 222 22% 17%;
+    --primary: 212 80% 62%;
+    --primary-foreground: 222 38% 8%;
+    --accent: 212 80% 62%;
+    --accent-foreground: 222 38% 8%;
+    --ring: 212 80% 62%;
+  }
+
+  /* Obsidian — dark black */
+  .dark[data-palette="obsidian"] {
+    --background: 0 0% 5%;
+    --card: 0 0% 9%;
+    --popover: 0 0% 9%;
+    --paper: 0 0% 9%;
+    --paper-sunk: 0 0% 12%;
+    --foreground: 0 0% 94%;
+    --card-foreground: 0 0% 94%;
+    --popover-foreground: 0 0% 94%;
+    --ink: 0 0% 94%;
+    --ink-soft: 0 0% 76%;
+    --ink-faint: 0 0% 54%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --hairline: 0 0% 20%;
+    --secondary: 0 0% 14%;
+    --muted: 0 0% 14%;
+    --primary: 40 12% 88%;
+    --primary-foreground: 0 0% 5%;
+    --accent: 40 12% 88%;
+    --accent-foreground: 0 0% 5%;
+    --ring: 40 12% 88%;
+  }
+
+  /* Forest — warm olive/sage, sampled from the Noti brand mark */
+  .dark[data-palette="forest"] {
+    --background: 60 8% 12%;        /* deep forest #2c2c25-ish */
+    --card: 60 8% 17%;              /* paper card */
+    --popover: 60 8% 17%;
+    --paper: 60 8% 17%;             /* matches icon body #3a3a32 */
+    --paper-sunk: 60 8% 14%;
+    --foreground: 78 7% 88%;        /* sage ink, ties to letterform */
+    --card-foreground: 78 7% 88%;
+    --popover-foreground: 78 7% 88%;
+    --ink: 78 7% 88%;
+    --ink-soft: 78 6% 70%;
+    --ink-faint: 78 5% 52%;
+    --border: 60 10% 24%;
+    --input: 60 10% 24%;
+    --hairline: 60 10% 26%;
+    --secondary: 60 8% 20%;
+    --muted: 60 8% 20%;
+    --primary: 60 19% 36%;          /* olive cap accent */
+    --primary-foreground: 78 12% 92%;
+    --accent: 78 7% 63%;            /* sage glyph color */
+    --accent-foreground: 60 8% 12%;
+    --ring: 60 19% 36%;
+  }
+
+  .dark {
+    --background: 30 8% 8%;
+    --foreground: 40 14% 92%;
+    --card: 30 8% 11%;
+    --card-foreground: 40 14% 92%;
+    --popover: 30 8% 11%;
+    --popover-foreground: 40 14% 92%;
+    --primary: 32 60% 58%;
+    --primary-foreground: 30 10% 10%;
+    --secondary: 30 6% 16%;
+    --secondary-foreground: 40 14% 92%;
+    --muted: 30 6% 16%;
+    --muted-foreground: 30 6% 60%;
+    --accent: 32 60% 58%;
+    --accent-foreground: 30 10% 10%;
+    --destructive: 8 55% 55%;
+    --destructive-foreground: 40 14% 92%;
+    --border: 30 6% 20%;
+    --input: 30 6% 20%;
+    --ring: 32 60% 58%;
+    --hairline: 30 6% 22%;
+    --ink: 40 14% 92%;
+    --ink-soft: 40 10% 76%;
+    --ink-faint: 30 6% 54%;
+    --paper: 30 8% 11%;
+    --paper-sunk: 30 8% 13%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  input, textarea { font-size: 16px; }
+  ::selection { background: hsl(var(--primary) / 0.2); }
+}
+
+/* ============================================================
+   Global button contrast pass
+   Goal: every button reads as a distinct surface vs the page,
+   in both light and dark themes, without touching component code.
+   We target shadcn variants by their compiled class signatures
+   and add a subtle border + shade shift relative to background.
+   ============================================================ */
+@layer components {
+  /* Default (filled primary) — punch up shadow + crisp ring */
+  button.bg-primary,
+  a.bg-primary {
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 1px 2px hsl(var(--ink) / 0.10);
+  }
+
+  /* Secondary — needs a clear shade vs background */
+  button.bg-secondary {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--hairline));
+  }
+
+  /* Outline — make the border darker so it's actually visible */
+  button.border-input {
+    border-color: hsl(var(--ink) / 0.18);
+    background: hsl(var(--paper));
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.03);
+  }
+  .dark button.border-input {
+    border-color: hsl(var(--ink) / 0.22);
+    background: hsl(var(--paper-sunk));
+  }
+
+  /* Ghost / icon-only buttons — give them a faint plate on hover so they
+     don't disappear into the surface. Also nudge resting state slightly. */
+  button.hover\:bg-accent:not(.bg-primary):not(.bg-secondary):not(.bg-destructive):not(.border-input) {
+    background: hsl(var(--paper-sunk) / 0.6);
+    border: 1px solid hsl(var(--hairline) / 0.7);
+  }
+  .dark button.hover\:bg-accent:not(.bg-primary):not(.bg-secondary):not(.bg-destructive):not(.border-input) {
+    background: hsl(var(--ink) / 0.06);
+    border: 1px solid hsl(var(--ink) / 0.12);
+  }
+
+  /* Destructive — slightly stronger shadow for weight */
+  button.bg-destructive {
+    box-shadow: 0 1px 2px hsl(var(--destructive) / 0.30);
+  }
+
+  /* TipTap rich-text styles. Used by RichEditor (composer) and the
+     `noti-rich` class in NoteViewer when a note body is HTML. Keeps the
+     visual language consistent with our `.ruled` plain-text body. */
+  .tiptap, .noti-rich {
+    color: hsl(var(--ink));
+    line-height: 1.7;
+  }
+  .tiptap p, .noti-rich p { margin: 0.25rem 0; min-height: 1.5em; }
+  .tiptap h1, .noti-rich h1 {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 700; margin: 0.75rem 0 0.25rem;
+    color: hsl(var(--ink));
+  }
+  .tiptap h2, .noti-rich h2 {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 600; margin: 0.6rem 0 0.2rem;
+    color: hsl(var(--ink));
+  }
+  .tiptap ul, .noti-rich ul,
+  .tiptap ol, .noti-rich ol {
+    padding-left: 1.4rem; margin: 0.35rem 0;
+  }
+  .tiptap ul, .noti-rich ul { list-style: disc; }
+  .tiptap ol, .noti-rich ol { list-style: decimal; }
+  .tiptap li, .noti-rich li { margin: 0.1rem 0; }
+  .tiptap li > p, .noti-rich li > p { margin: 0; }
+  /* Task list (checkboxes) */
+  .tiptap ul[data-type="taskList"], .noti-rich ul[data-type="taskList"] {
+    list-style: none; padding-left: 0.25rem;
+  }
+  .tiptap ul[data-type="taskList"] li, .noti-rich ul[data-type="taskList"] li {
+    display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+  .tiptap ul[data-type="taskList"] li > label,
+  .noti-rich ul[data-type="taskList"] li > label {
+    margin-top: 0.3rem; flex-shrink: 0;
+  }
+  .tiptap ul[data-type="taskList"] li > div,
+  .noti-rich ul[data-type="taskList"] li > div { flex: 1; min-width: 0; }
+  .tiptap ul[data-type="taskList"] li[data-checked="true"] > div,
+  .noti-rich ul[data-type="taskList"] li[data-checked="true"] > div {
+    text-decoration: line-through; color: hsl(var(--ink-faint));
+  }
+  .tiptap blockquote, .noti-rich blockquote {
+    border-left: 3px solid hsl(var(--hairline));
+    padding-left: 0.75rem; margin: 0.5rem 0;
+    color: hsl(var(--ink-soft)); font-style: italic;
+  }
+  .tiptap code, .noti-rich code {
+    background: hsl(var(--paper-sunk));
+    padding: 0.1rem 0.35rem; border-radius: 0.3rem;
+    font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .tiptap a, .noti-rich a {
+    color: hsl(var(--primary)); text-decoration: underline;
+  }
+  /* Placeholder for an empty editor */
+  .tiptap p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left; color: hsl(var(--ink-faint));
+    pointer-events: none; height: 0;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); font-optical-sizing: auto; }
+  .hairline { border-color: hsl(var(--hairline)); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-lift { box-shadow: var(--shadow-lift); }
+  .ink { color: hsl(var(--ink)); }
+  .ink-soft { color: hsl(var(--ink-soft)); }
+  .ink-faint { color: hsl(var(--ink-faint)); }
+  .bg-paper { background: hsl(var(--paper)); }
+  .bg-sunk { background: hsl(var(--paper-sunk)); }
+
+  /* Full-screen overlay safe-area gutters. Apply to backdrop wrappers (the
+     `fixed inset-0` element) on modals/sheets so iPad rotation never clips
+     content under the dynamic island, home indicator, or rounded corners. */
+  .safe-overlay {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .transition-smooth { transition: all var(--transition-smooth); }
+
+  /* Ruled paper — faint horizontal lines aligned to the typing baseline */
+  .ruled {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.75rem - 1px),
+      hsl(var(--hairline) / 0.55) calc(1.75rem - 1px),
+      hsl(var(--hairline) / 0.55) 1.75rem
+    );
+    background-attachment: local;
+    line-height: 1.75rem;
+  }
+
+  @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes slide-up { from { transform: translateY(16px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+  @keyframes sheet-up { from { transform: translateY(100%) } to { transform: translateY(0) } }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.3) }
+    70% { box-shadow: 0 0 0 12px hsl(var(--primary) / 0) }
+    100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0) }
+  }
+  /* Priority emphasis — uses --prio-h (HSL string) set inline by the
+     consuming component so the same keyframes work for any priority hue. */
+  @keyframes priority-breathe {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--prio-h, 0 78% 52%) / 0), 0 0 0 1px hsl(var(--prio-h, 0 78% 52%) / 0.45) }
+    50%      { box-shadow: 0 0 0 6px hsl(var(--prio-h, 0 78% 52%) / 0.10), 0 0 0 1px hsl(var(--prio-h, 0 78% 52%) / 0.65) }
+  }
+  @keyframes priority-pulse-strong {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--prio-h, 0 78% 52%) / 0), 0 0 0 1.5px hsl(var(--prio-h, 0 78% 52%) / 0.7) }
+    50%      { box-shadow: 0 0 0 10px hsl(var(--prio-h, 0 78% 52%) / 0.14), 0 0 0 1.5px hsl(var(--prio-h, 0 78% 52%) / 0.95) }
+  }
+  @keyframes priority-bar {
+    0%, 100% { opacity: 0.65; transform: scaleY(0.85) }
+    50%      { opacity: 1;    transform: scaleY(1) }
+  }
+  .animate-fade-in { animation: fade-in 220ms ease both; }
+  .animate-slide-up { animation: slide-up 280ms cubic-bezier(.2,.8,.2,1) both; }
+  .animate-sheet-up { animation: sheet-up 320ms cubic-bezier(.2,.8,.2,1) both; }
+  .animate-pulse-ring { animation: pulse-ring 1.6s ease-out infinite; }
+  .animate-priority-high { animation: priority-breathe 2.6s ease-in-out infinite; }
+  .animate-priority-critical { animation: priority-pulse-strong 1.8s ease-in-out infinite; }
+  .animate-priority-bar { animation: priority-bar 1.8s ease-in-out infinite; transform-origin: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-priority-high,
+    .animate-priority-critical,
+    .animate-priority-bar { animation: none; }
+  }
+}
+
+/* Animated phone showcase on the landing page */
+@keyframes notiSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes notiPop {
+  0%   { opacity: 0; transform: scale(0.7); }
+  60%  { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes notiPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+@keyframes notiBar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+@keyframes notiRing {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notiSlideUp, .notiPop, .notiPulse, .notiBar, .notiRing { animation: none !important; }
+}
